@@ -38,15 +38,15 @@ export function VoicePostCard({ post, onReply }: VoicePostCardProps) {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.userInfo}>
-          <Text style={styles.displayName}>{post.displayName}</Text>
+          <Text style={styles.displayName}>{post.display_name || post.displayName}</Text>
           <Text style={styles.username}>@{post.username}</Text>
         </View>
-        <Text style={styles.timestamp}>{formatTimeAgo(post.createdAt)}</Text>
+        <Text style={styles.timestamp}>{formatTimeAgo(post.created_at || post.createdAt)}</Text>
       </View>
 
       <View style={styles.audioContainer}>
         <AudioPlayer
-          audioUrl={post.audioUrl}
+          audioUrl={post.audio_url || post.audioUrl}
           duration={post.duration}
         />
         <Text style={styles.duration}>{formatDuration(post.duration)}</Text>
@@ -59,7 +59,7 @@ export function VoicePostCard({ post, onReply }: VoicePostCardProps) {
         >
           <MessageCircle color="#666666" size={18} />
           <Text style={styles.actionText}>
-            {post.replyCount > 0 ? post.replyCount : 'Reply'}
+            {(post.reply_count || post.replyCount || 0) > 0 ? (post.reply_count || post.replyCount) : 'Reply'}
           </Text>
         </TouchableOpacity>
       </View>

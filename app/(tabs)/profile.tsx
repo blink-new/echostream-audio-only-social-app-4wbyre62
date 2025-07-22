@@ -23,12 +23,12 @@ export default function ProfileScreen() {
       setUser(currentUser);
 
       if (currentUser) {
-        const userPosts = await blink.db.voicePosts.list({
+        const userPosts = await blink.db.voice_posts.list({
           where: { 
-            userId: currentUser.id,
-            parentId: null // Only main posts, not replies
+            user_id: currentUser.id,
+            parent_id: null // Only main posts, not replies
           },
-          orderBy: { createdAt: 'desc' },
+          orderBy: { created_at: 'desc' },
           limit: 50,
         });
         setPosts(userPosts);

@@ -111,15 +111,15 @@ export function RecordingModal({ visible, onClose, onPost, parentPost }: Recordi
       );
 
       // Create voice post
-      const newPost = await blink.db.voicePosts.create({
-        userId: user.id,
+      const newPost = await blink.db.voice_posts.create({
+        user_id: user.id,
         username: user.username || user.email.split('@')[0],
-        displayName: user.displayName || user.username || user.email.split('@')[0],
-        audioUrl: publicUrl,
+        display_name: user.displayName || user.username || user.email.split('@')[0],
+        audio_url: publicUrl,
         duration: Math.floor(duration / 1000),
-        parentId: parentPost?.id || null,
-        replyCount: 0,
-        createdAt: new Date().toISOString(),
+        parent_id: parentPost?.id || null,
+        reply_count: 0,
+        created_at: new Date().toISOString(),
       });
 
       onPost(newPost);

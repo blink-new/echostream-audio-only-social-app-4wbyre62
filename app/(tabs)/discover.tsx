@@ -22,9 +22,9 @@ export default function DiscoverScreen() {
 
   const loadPosts = async () => {
     try {
-      const voicePosts = await blink.db.voicePosts.list({
-        where: { parentId: null }, // Only main posts, not replies
-        orderBy: { createdAt: 'desc' },
+      const voicePosts = await blink.db.voice_posts.list({
+        where: { parent_id: null }, // Only main posts, not replies
+        orderBy: { created_at: 'desc' },
         limit: 50,
       });
       setPosts(voicePosts);
